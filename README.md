@@ -28,7 +28,7 @@
 
 😃 Import project (PeriploSoft) with STS or Intellij, you must be have has JDK 17 installed in your machine 😊</br>
 😬 Run to SpringBoot application </br>
-📝 Copy and paste the following URL (https://cloudy-firefly-30794.postman.co/workspace/PruebaCeiba~62add125-25a5-4cf7-973b-fd50fee26e6d/request/8889996-ede0732a-a311-4b6d-a465-cc7aac88b897?action=share&source=copy-link&creator=8889996&ctx=documentation)to postman app 😉</br>
+📝 Copy and paste the following URL (https://cloudy-firefly-30794.postman.co/workspace/PruebaCeiba~62add125-25a5-4cf7-973b-fd50fee26e6d/request/8889996-ede0732a-a311-4b6d-a465-cc7aac88b897?action=share&source=copy-link&creator=8889996&ctx=documentation) to postman app 😉</br>
 😯 Run test from postman and verify expected results 😯</br>
 😱 The project also has swagger doc 😱</br>
 👍 Swagger doc you can see it in the following url (http://localhost:8090/swagger-ui/index.html#/controller-client/getInfoClient) from any internet navegator (Chrome. Iexplorer and othes)👍 </br>
