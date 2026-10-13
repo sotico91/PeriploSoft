@@ -5,8 +5,12 @@ import com.co.periferiaIT.PeriploSoft.client.exceptions.impl.ResourceNotFoundExc
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.TypeMismatchException;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -47,5 +51,39 @@ class GlobalControllerExceptionHandlerTest {
 
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
         assertEquals("Bad request", response.getBody());
+    }
+
+    @Test
+    void testHandleNoResourceFoundException() {
+
+        GlobalControllerExceptionHandler exceptionHandler = new GlobalControllerExceptionHandler();
+        NoResourceFoundException ex = new NoResourceFoundException(HttpMethod.GET, "/no-existe");
+
+        ResponseEntity<String> response = exceptionHandler.handleException(ex);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals("Not Found", response.getBody());
+    }
+
+    @Test
+    void testHandleMethodNotSupportedException() {
+
+        GlobalControllerExceptionHandler exceptionHandler = new GlobalControllerExceptionHandler();
+        HttpRequestMethodNotSupportedException ex = new HttpRequestMethodNotSupportedException("POST");
+
+        ResponseEntity<String> response = exceptionHandler.handleException(ex);
+
+        assertEquals(HttpStatus.METHOD_NOT_ALLOWED, response.getStatusCode());
+    }
+
+    @Test
+    void testHandleTypeMismatchException() {
+
+        GlobalControllerExceptionHandler exceptionHandler = new GlobalControllerExceptionHandler();
+        TypeMismatchException ex = new TypeMismatchException("abc", Long.class);
+
+        ResponseEntity<String> response = exceptionHandler.handleException(ex);
+
+        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
 }
